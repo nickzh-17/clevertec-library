@@ -1,0 +1,43 @@
+.icon-button {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFFFFF;
+    filter: drop-shadow(0px 2px 4px rgba(191, 196, 201, 0.2)) drop-shadow(0px 3px 4px rgba(191, 196, 201, 0.18)) drop-shadow(0px 1px 5px rgba(191, 196, 201, 0.24));
+
+    cursor: pointer;
+
+    svg {
+        fill: #A7A7A7;
+    }
+
+    &.icon-button--active {
+        background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
+
+        svg {
+            fill: white;
+        }
+    }
+
+    &:hover {
+        filter: drop-shadow(0px 2px 5px rgba(54, 54, 54, 0.1));
+    }
+
+    &:active {
+        filter: drop-shadow(0px 3px 4px rgba(222, 125, 11, 0.2)) drop-shadow(0px 1px 10px rgba(249, 89, 8, 0.2));
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .icon-button {
+        width: 32px;
+        height: 32px;
+    }
+}

@@ -1,0 +1,25 @@
+.smart-book-image {
+    border: 1px solid #A7A7A7;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+        width: inherit;
+        height: inherit;
+    }
+
+    .image-bypass {
+        width: inherit;
+        height: inherit;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: #F9F9FA;
+
+        svg {
+            fill: none;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.burger-menu {
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+    z-index: 10;
+
+    // display: none;
+}
+
+@media screen and (min-width: 1440px) {
+    .burger-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .burger-menu {
+        width: 24px;
+        height: 24px;
+    }
+}

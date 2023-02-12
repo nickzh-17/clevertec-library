@@ -1,0 +1,30 @@
+.layout {
+    padding-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .layout__header {
+        flex: 0 0 auto;
+    }
+
+    .layout__content {
+        flex: 1 0 auto;
+    
+    }
+    
+    .layout__footer {
+        flex: 0 0 auto;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .layout {
+        padding-top: 24px;
+    }
+}
+
+
+

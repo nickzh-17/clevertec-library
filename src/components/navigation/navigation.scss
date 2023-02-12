@@ -1,0 +1,110 @@
+.navigation {
+    width: 279px;
+
+    .main-links {
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+    }
+
+    .sub-liks {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 0px;
+        overflow: hidden;
+
+        &.open {
+            height: min-content;
+            padding-top: 16px;
+        }
+    }
+
+    .navigation__main-item {
+        display: inline-block;
+        height: 36px;
+        width: 255px;
+        
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+
+        &.main-item--active {
+            display: inline-block;
+            height: 36px;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-image: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%) 1;
+        }
+    }
+
+    .all-books__wrapper {
+        border: none;
+        text-align: left;
+
+        width: 255px;
+        height: 36px;
+        line-height: 28px;
+    
+        .arrow-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+
+            margin-left: 87px;
+            transform: scaleY(-1);
+
+            &.open {
+                transform: scaleY(1);
+            }
+
+            &.active {
+                visibility: visible;
+            }
+        }
+    }
+
+    .navigation__book-item {
+        width: inherit;
+        box-sizing: border-box;
+        margin-left: 20px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        white-space: normal;
+    }
+}
+
+
+
+
+
+.navigation__item--active {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+
+    background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.navigation__main-item .active {
+    background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.book-count {
+    margin-left: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #A7A7A7;
+}
