@@ -1,10 +1,14 @@
-import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import { Header } from '../header/header';
 import { Footer } from '../footer';
+import { LottieLoader } from '../lottie-loader';
+
+
 
 import './layout.scss';
+
 
 export const Layout = () => {
 
@@ -21,7 +25,9 @@ export const Layout = () => {
             <Outlet />
         </div>
 
-        <Footer className='layout__footer'/>    
+        <Footer className='layout__footer'/>
+
+        <LottieLoader />
 
     </div>;
 }

@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import { store } from './store';
+
 import { MainPage } from './pages/main';
 import { BookPage } from './pages/book';
 import { Terms } from './pages/terms';
@@ -12,10 +15,12 @@ import { ErrorPage } from './pages/error-page';
 
 import './index.css';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // <React.StrictMode>
+  <Provider store={store} >
     <HashRouter>
       <Routes>
         
@@ -31,5 +36,5 @@ root.render(
         </Route>
       </Routes>
     </HashRouter>
-  // </React.StrictMode>
+  </Provider>
 );
