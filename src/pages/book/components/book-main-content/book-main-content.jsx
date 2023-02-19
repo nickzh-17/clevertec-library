@@ -1,6 +1,6 @@
-import { useWindowWidth } from '../../../functions/get-window-width';
+import { useWindowWidth } from '../../../../functions/get-window-width';
 
-import { BookButton } from '../../book-card/book-button';
+import { BookButton } from '../../../../components/book-card/book-button';
 import { BookPreview } from './book-preview';
 
 import './book-main-content.scss';

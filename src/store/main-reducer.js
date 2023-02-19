@@ -21,6 +21,7 @@ export const mainReducer = (state = defaultState, action ) => {
         console.log('ERROR CLOSED!');
         return {...state, isErrorModalActive: false};
 
+
       default:
         return state;
     }

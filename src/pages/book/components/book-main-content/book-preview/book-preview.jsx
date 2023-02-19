@@ -1,5 +1,5 @@
-import { Slider } from '../../../slider';
-import { SmartBookImage } from '../../../smart-book-image';
+import { Slider } from '../../../../../components/slider';
+import { SmartBookImage } from '../../../../../components/smart-book-image';
 
 
 const hasSlides = (book) => Boolean( book.images?.length && book.images?.length > 1 );

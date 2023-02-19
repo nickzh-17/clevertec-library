@@ -1,0 +1,56 @@
+.single-book {
+    display: flex;
+    flex-direction: column; 
+ 
+    .border-title {
+         height: 44px;
+         margin-bottom: 16px;
+         border-bottom: 1px solid #EBEBEB;
+     }
+ 
+     .title {
+         font-weight: 700;
+         font-size: 18px;
+         line-height: 28px;
+         color: #363636;
+     }
+ 
+     .single-book__main-content {
+         margin-top: 42px;
+         margin-bottom: 42px;
+     }
+     
+ }
+
+ @media screen and (min-width: 768px) and (max-width: 1439px) {
+    .single-book {
+        padding-top: 46px;
+        padding-bottom: 48px;
+
+        .title {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .single-book__main-content {
+            margin-top: 48px;
+            margin-bottom: 52px;
+        }
+    }    
+}
+
+@media screen and (max-width: 767px) {
+    .single-book {
+        padding-top: 24px;
+        padding-bottom: 20px;
+
+        .border-title {
+            height: 36px;
+        }
+
+        .single-book__main-content {
+            margin-top: 20px;
+        }
+    }   
+}

@@ -1,75 +1,11 @@
 .book-page {
-   display: flex;
-   flex-direction: column;
+    padding: 42px 0;
+ }
 
-
-
-    .slides-wrapper {
-        position: absolute;
-        top: 25%;
-        left: 25%;
-        width: 445px;
-        height: 696px;
-        background: rgba(226, 176, 82, 0.664);
-
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .big-swiper {
-            background: rgb(192, 236, 125);
-        }
-
-        .big-slide {
-            height: 593px;
-            width: 445px;
-            border-radius: 3px;
-            border: 1px solid #F83600;
-            overflow: hidden;
-        }
-    }
-
-
-
-
-
-   padding: 42px 0;
-
-   .border-title {
-        height: 44px;
-        margin-bottom: 16px;
-        border-bottom: 1px solid #EBEBEB;
-    }
-
-    .title {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 28px;
-        color: #363636;
-    }
-
-    .book-page__main-content {
-        margin-top: 42px;
-        margin-bottom: 42px;
-    }
-    
-}
-
-@media screen and (min-width: 768px) and (max-width: 1439px) {
+ @media screen and (min-width: 768px) and (max-width: 1439px) {
     .book-page {
         padding-top: 46px;
         padding-bottom: 48px;
-
-        .title {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 24px;
-        }
-
-        .book-page__main-content {
-            margin-top: 48px;
-            margin-bottom: 52px;
-        }
     }    
 }
 
@@ -77,14 +13,92 @@
     .book-page {
         padding-top: 24px;
         padding-bottom: 20px;
-
-        .border-title {
-            height: 36px;
-        }
-
-        .book-page__main-content {
-            margin-top: 20px;
-        }
     }   
 }
 
+
+// .book-page {
+//     display: flex;
+//     flex-direction: column;
+//     padding: 42px 0;
+ 
+ 
+//      .slides-wrapper {
+//          position: absolute;
+//          top: 25%;
+//          left: 25%;
+//          width: 445px;
+//          height: 696px;
+//          background: rgba(226, 176, 82, 0.664);
+ 
+//          display: flex;
+//          flex-direction: column;
+//          gap: 16px;
+ 
+//          .big-swiper {
+//              background: rgb(192, 236, 125);
+//          }
+ 
+//          .big-slide {
+//              height: 593px;
+//              width: 445px;
+//              border-radius: 3px;
+//              border: 1px solid #F83600;
+//              overflow: hidden;
+//          }
+//      }
+ 
+ 
+//     .border-title {
+//          height: 44px;
+//          margin-bottom: 16px;
+//          border-bottom: 1px solid #EBEBEB;
+//      }
+ 
+//      .title {
+//          font-weight: 700;
+//          font-size: 18px;
+//          line-height: 28px;
+//          color: #363636;
+//      }
+ 
+//      .book-page__main-content {
+//          margin-top: 42px;
+//          margin-bottom: 42px;
+//      }
+     
+//  }
+ 
+//  @media screen and (min-width: 768px) and (max-width: 1439px) {
+//      .book-page {
+//          padding-top: 46px;
+//          padding-bottom: 48px;
+ 
+//          .title {
+//              font-weight: 600;
+//              font-size: 16px;
+//              line-height: 24px;
+//          }
+ 
+//          .book-page__main-content {
+//              margin-top: 48px;
+//              margin-bottom: 52px;
+//          }
+//      }    
+//  }
+ 
+//  @media screen and (max-width: 767px) {
+//      .book-page {
+//          padding-top: 24px;
+//          padding-bottom: 20px;
+ 
+//          .border-title {
+//              height: 36px;
+//          }
+ 
+//          .book-page__main-content {
+//              margin-top: 20px;
+//          }
+//      }   
+//  }
+ 

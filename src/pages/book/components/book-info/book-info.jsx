@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useWindowWidth } from '../../../functions/get-window-width';
-import { BookReviews } from '../../book-reviews';
-import { LargeButton } from '../../ui/large-button';
-import { RatingStars } from '../../ui/rating-stars';
-import { SmallButton } from '../../ui/small-button';
+import { useWindowWidth } from '../../../../functions/get-window-width';
+import { BookReviews } from '../../../../components/book-reviews';
+import { LargeButton } from '../../../../components/ui/large-button';
+import { RatingStars } from '../../../../components/ui/rating-stars';
+import { SmallButton } from '../../../../components/ui/small-button';
 import './book-info.scss';
 
 const getRowsForWidth = (book, width) => {

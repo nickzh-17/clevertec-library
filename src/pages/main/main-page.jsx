@@ -23,8 +23,14 @@ export const MainPage = () => {
             if(responses[0].statusText === 'OK' && responses[1].statusText === 'OK') {
                 dispatch({type: 'SET_BOOKS', payload: responses[0].data});
                 dispatch({type: 'SET_GENRES', payload: responses[1].data});
+                
                 setBooks(responses[0].data);
                 dispatch({type: 'END_FETCHING'});
+
+                dispatch({type: 'SYNCHRO_NAV', payload: true});
+                console.log('syncronize..');
+                dispatch({type: 'SYNCHRO_NAV', payload: false});
+
             } else {
                 throw new Error('Something went wrong');
                 
