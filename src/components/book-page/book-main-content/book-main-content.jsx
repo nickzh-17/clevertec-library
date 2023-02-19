@@ -1,9 +1,9 @@
 import { useWindowWidth } from '../../../functions/get-window-width';
+
 import { BookButton } from '../../book-card/book-button';
-import { Slider } from '../../slider';
-import { SmartBookImage } from '../../smart-book-image';
-import './book-main-content.scss';
 import { BookPreview } from './book-preview';
+
+import './book-main-content.scss';
 
 
 
@@ -15,9 +15,13 @@ export const BookMainContent = ({book, className}) => {
         <BookPreview book={book} />
 
         <div className="name-section">
-            <span className='name'>{book.name}</span>
-            <span className='author'>{book.author}, {book.publishDate}</span>
-            <BookButton className='button' book={book} size={ ( currentViewWidth >= 768 ) ? 'large' : 'small' } />
+            <span className='name'>{book.title}</span>
+            <span className='author'>{book.authors}, {book.issueYear}</span>
+            <BookButton 
+                booking={book.booking} 
+                delivery={book.delivery} 
+                className='button' 
+                size={ ( currentViewWidth >= 768 ) ? 'large' : 'small' } />
         </div>
         <div className="description-section">
             <span className='title'>О книге</span>

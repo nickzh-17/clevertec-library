@@ -6,9 +6,49 @@ import { RatingStars } from '../../ui/rating-stars';
 import { SmallButton } from '../../ui/small-button';
 import './book-info.scss';
 
+const getRowsForWidth = (book, width) => {
+    const rowsDesktop = [
+        {parameter: 'Издательство', property: 'publish'},
+        {parameter: 'Год издания', property: 'issueYear'},
+        {parameter: 'Страниц', property: 'pages'},
+        {parameter: 'Переплёт', property: 'cover'},
+        {parameter: 'Формат', property: 'format'},
+        {parameter: 'Жанр', property: 'categories'},
+        {parameter: 'Вес', property: 'weight'},
+        {parameter: 'ISBN', property: 'ISBN'},
+        {parameter: 'Изготовитель', property: 'producer'}
+    ];
+
+    const rowsMobile = [
+        {parameter: 'Издательство', property: 'publish'},
+        {parameter: 'Год издания', property: 'issueYear'},
+        {parameter: 'Страниц', property: 'pages'},
+        {parameter: 'Переплёт', property: 'cover'},
+        {parameter: 'Формат', property: 'format'},
+        {parameter: 'Вес', property: 'weight'},
+        {parameter: 'ISBN', property: 'ISBN'},
+        {parameter: 'Изготовитель', property: 'producer'}
+    ];
+
+    const currentRows = (width >= 768) ? rowsDesktop : rowsMobile ;
+
+    return currentRows.map( (row) => 
+        <div 
+            key={Math.random().toString()}
+            className="info__row"
+        >
+            <span className='parameter'>{row.parameter}</span>
+            <span className='value'>{book[row.property]}</span>
+        </div>
+    ); 
+    
+};
+
+
 export const BookInfo = ({book}) => {
     const currentViewWidth = useWindowWidth();
     const [isReviewsOpen, setIsReviewsOpen] = useState(false);
+
 
     const reviewsArrowClickHandler = () => setIsReviewsOpen(!isReviewsOpen);
 
@@ -16,70 +56,23 @@ export const BookInfo = ({book}) => {
     return <div className='book-info global-wrapper'>
         <div className='rate-section'>
             <div className='title border-title'>Рейтинг</div>
-            <RatingStars className='rate' ratingInfo={book.reviews} showAnswer={true} />
+            <RatingStars className='rate' rate={book.rating} showAnswer={true} />
         </div>
-        
+
         <div className='info-section'>
             <div className='title'>Подробная информация</div>
             <div className='border-title' />
             <div className='info__table'>
-                <div className="info__row">
-                    <span className='parameter'>Издательство</span>
-                    <span className='value'>{book.publishHouse}</span>
-                </div>
-                <div className="info__row">
-                    <span className='parameter'>Год издания</span>
-                    <span className='value'>{book.publishDate}</span>
-                </div>
-                <div className="info__row">
-                    <span className='parameter'>Страниц</span>
-                    <span className='value'>{book.pageAmount}</span>
-                </div>
-                <div className="info__row">
-                    <span className='parameter'>Переплёт</span>
-                    <span className='value'>{book.binding}</span>
-                </div>
-                <div className="info__row">
-                    <span className='parameter'>Формат</span>
-                    <span className='value'>{book.format}</span>
-                </div>
-                { 
-                    currentViewWidth >= 768 ?
-                        <div className="info__row">
-                            <span className='parameter'>Жанр</span>
-                            <span className='value'>{book.genre}</span>
-                        </div>
-                        : false
-                }
-                <div className="info__row">
-                    <span className='parameter'>Вес</span>
-                    <span className='value'>{book.weight}</span>
-                </div>
-                <div className="info__row">
-                    <span className='parameter'>ISBN</span>
-                    <span className='value'>{book.isbn}</span>
-                </div>
-                { 
-                    currentViewWidth < 768 ?
-                        <div className="info__row">
-                            <span className='parameter'>Возрастные ограничения</span>
-                            <span className='value'>{book.ageLimit}+</span>
-                        </div>
-                        : false
-                }
-                <div className="info__row">
-                    <span className='parameter'>Изготовитель</span>
-                    <span className='value'>{book.manufacturer}</span>
-                </div>
+                { getRowsForWidth(book, currentViewWidth) }
             </div>
         </div>
 
         <div className='reviews-section'>
-            <div className={`reviews-title title border-title  ${(!book.reviews?.length ? 'no-reviews' : '')} ${isReviewsOpen ? 'open' : ''}`}>
+            <div className={`reviews-title title border-title  ${(!book.comments?.length ? 'no-reviews' : '')} ${isReviewsOpen ? 'open' : ''}`}>
                 Отзывы
-                <span className='review-count'>{book.reviews?.length || 0}</span>
+                <span className='review-count'>{book.comments?.length || 0}</span>
                 {
-                    (book.reviews?.length) ? 
+                    (book.comments?.length) ? 
                         <button 
                             data-test-id='button-hide-reviews'
                             className={`review-arrow ${isReviewsOpen ? 'open' : ''}`} 
@@ -96,7 +89,7 @@ export const BookInfo = ({book}) => {
 
 
             </div>
-            <BookReviews reviews={book.reviews} isOpen={isReviewsOpen} />
+            <BookReviews reviews={book.comments} isOpen={isReviewsOpen} />
             { 
                 ( currentViewWidth >= 768 ) ? 
                     <LargeButton className='reviews__button' dataTestId='button-rating' >Оценить книгу</LargeButton> 

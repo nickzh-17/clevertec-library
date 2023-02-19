@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Scrollbar, Thumbs, FreeMode, Navigation, Pagination } from "swiper/core";
+import SwiperCore, { Scrollbar, Thumbs, FreeMode, Pagination } from 'swiper/core';
 
-import { booksData } from '../../resources/books';
 import { useWindowWidth } from '../../functions/get-window-width';
 
 import 'swiper/swiper-bundle.css';
@@ -20,18 +19,18 @@ export const Slider = ({book}) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
 
-    const slidesBig = book.slidesBig.map( (image, index) => 
+    const slidesBig = book.images.map( (image, index) => 
         <SwiperSlide key={book.id + Math.random().toString()}>
-            <img className='slide' src={image} alt={`big slide ${index}`} />
+            <img className='slide' src={ 'https://strapi.cleverland.by'.concat(image.url) } alt={`big slide ${index}`} />
         </SwiperSlide>
     );
 
-    const slidesSmall = book.slidesSmall.map( (image, index) => 
+    const slidesSmall = book.images.map( (image, index) => 
         <SwiperSlide 
             data-test-id='slide-mini' 
             key={book.id + Math.random().toString()}
         >
-            <img className='slide' src={image} alt={`small slide ${index}`} />
+            <img className='slide' src={ 'https://strapi.cleverland.by'.concat(image.url) } alt={`small slide ${index}`} />
         </SwiperSlide>
     );
 

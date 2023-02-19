@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '../header/header';
 import { Footer } from '../footer';
 import { LottieLoader } from '../lottie-loader';
-
+import { ErrorModal } from '../error-modal';
 
 
 import './layout.scss';
@@ -28,6 +28,6 @@ export const Layout = () => {
         <Footer className='layout__footer'/>
 
         <LottieLoader />
-
+        <ErrorModal />
     </div>;
 }

@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Navigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 
-
-import { FetchData } from '../../api/fetch-data';
-import { booksData, bookGenres } from '../../resources/books';
-
+import axios from 'axios';
 
 import { CurrentPath } from '../../components/book-page/current-path';
 import { BookMainContent } from '../../components/book-page/book-main-content';
@@ -14,38 +11,48 @@ import { BookInfo } from '../../components/book-page/book-info';
 
 import './book-page.scss';
 
-const hasCategory = (categories, current) => categories.includes(current);
+// const isParamValid = (params, currentParam) => {
+//     if( !params.includes(currentParam) ) return false;
 
-const isParamValid = (params, currentParam) => {
-    if( !params.includes(currentParam) ) return false;
-
-    return true;
-};
-
-// const fetchBook = async () => {
-//     // setIsPageLoading(true);
-//     // console.log('loading started', isPageLoading);
-
-//     const response = await FetchData.getBook('2');
-    
-//     // setIsPageLoading(false);
-//     // console.log('loaded!', isPageLoading);
-//     // console.log(response);
+//     return true;
 // };
 
 
 
-export const BookPage = () => {
-    const {bookId, category} = useParams();
-    const genres = bookGenres.map( (item) => item.route );
-    const currentBook = booksData.find( (book) => book.id === bookId );
-    
 
-    if( !isParamValid(genres, category) || !currentBook ) return <Navigate to='error' />
+export const BookPage = () => {
+    const dispatch = useDispatch();
+    const currentBook = useSelector(store => store.bookReducer.currentBook);
+
+    const {bookId, bookCategory} = useParams();
+
+
+    useEffect( () => {
+        dispatch({type: 'START_FETCHING'});
+        
+        axios.get(`https://strapi.cleverland.by/api/books/${bookId}`)
+            .then(response => {
+                if(response.statusText === 'OK') {
+                    dispatch({type: 'SET_CURRENT-BOOK', payload: response.data});
+                    dispatch({type: 'END_FETCHING'});
+                } else {
+                    throw new Error('Error on Book loading:', response);
+            }
+            }).catch( () => {
+                dispatch({type: 'END_FETCHING'});
+                dispatch({type: 'OPEN_FETCHING-ERROR'});
+            });
+        }, [dispatch, bookId, bookCategory] );
+
+
+
+
     
+    if(!currentBook) return false;
+
     return <section className='book-page'> 
-                    <CurrentPath genre={currentBook.genre} name={currentBook.name}/>
+                    <CurrentPath category={currentBook.categories[0]} title={currentBook.title}/>
                     <BookMainContent className='book-page__main-content' book={currentBook} />
-                    <BookInfo book={currentBook}/>
+                    <BookInfo book={currentBook} />
     </section>;
 }

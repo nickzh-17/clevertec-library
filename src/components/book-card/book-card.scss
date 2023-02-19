@@ -11,12 +11,11 @@
             width: 24px;
         }
     }
-}
 
-.book-card--grid {
+    &.book-card--grid {
     display: flex;
     width: 190px;
-    height: 470px;
+    min-height: 470px;
     padding: 8px 8px 16px;
     border-radius: 10px;
 
@@ -74,160 +73,172 @@
         flex-direction: column;
         gap: 28px;
     }
-}
+    }
 
-.book-card--rows {
-    display: grid;
-    grid-template-columns: min-content 1fr 1fr;
-    grid-template-rows: repeat(3, min-content), 1fr;
-    column-gap: 16px;
-    grid-template-areas: 
-        'img    name    name'
-        'img    author  author'
-        'img    rate    button'
-        'img      x       x';
-
-    width: 825px;
-    padding: 16px 24px 16px 16px;
-    border-radius: 12px;
-
-    .image-wrapper {
-        grid-area: img;
-        width: 120px;
-        height: 170px;
-
-        border-radius: 3px;
-
-        img {
+    &.book-card--rows {
+        display: grid;
+        grid-template-columns: min-content 1fr 1fr;
+        grid-template-rows: repeat(3, min-content), 1fr;
+        column-gap: 16px;
+        grid-template-areas: 
+            'img    name    name'
+            'img    author  author'
+            'img    rate    button'
+            'img      x       x';
+    
+        width: 825px;
+        padding: 16px 24px 16px 16px;
+        border-radius: 12px;
+    
+        .image-wrapper {
+            grid-area: img;
+            width: 120px;
+            height: 170px;
+    
             border-radius: 3px;
-        }
-
-        .image-bypass {
-
-            svg {
-                width: 32px;
+    
+            img {
+                border-radius: 3px;
+            }
+    
+            .image-bypass {
+    
+                svg {
+                    width: 32px;
+                }
             }
         }
-    }
-
-    .name {
-        grid-area: name;
-        font-weight: 700;
-        font-size: 22px;
-        line-height: 30px;
-    }
-
-    .author {
-        grid-area: author;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-
-        margin-top: 8px;
-        margin-bottom: 24px;
-    }
-        
-    .rate {
-        grid-area: rate;
-        align-self: center;
-    }
-
-    .button {
-        grid-area: button;
-        justify-self: flex-end;
-        width: 174px;
-    }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1439px) {
-    .book-card--rows {
-        width: 640px;
     
         .name {
-            font-size: 24px;
+            grid-area: name;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 30px;
         }
     
         .author {
-            margin-bottom: 16px;
+            grid-area: author;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+    
+            margin-top: 8px;
+            margin-bottom: 24px;
         }
-    } 
+            
+        .rate {
+            grid-area: rate;
+            align-self: center;
+        }
+    
+        .button {
+            grid-area: button;
+            justify-self: flex-end;
+            width: 174px;
+        }
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .book-card {
+        &.book-card--rows {
+            width: 640px;
+        
+            .name {
+                font-size: 24px;
+            }
+        
+            .author {
+                margin-bottom: 16px;
+            }
+        } 
+    }
+    
 }
 
 
 @media screen and (max-width: 767px) {
-    .book-card--grid {
-        width: 288px;
-        padding: 8px 16px 16px;
-    
-        .top-section {
-            flex: 0 0 auto;
-            margin-bottom: 16px;
-        }
-
-        .book-card__image {
-            align-self: center;
-        }
+    .book-card {
         
-        .bottom-section {
-            flex: 1 0 auto;
-            justify-content: space-between;
-        }
-
-        .book-card__button {
-            width: 100%;
-        }
+        &.book-card--grid {
+            width: 288px;
+            padding: 8px 16px 16px;
+        
+            .top-section {
+                flex: 0 0 auto;
+                margin-bottom: 16px;
+            }
     
-        .book-name {
-            flex: 0 0 auto;
-            margin-bottom: 8px;
-        }
-
-        .book-author {
-            font-size: 12px;
-        }
-    }
+            .book-card__image {
+                align-self: center;
+            }
+            
+            .bottom-section {
+                flex: 1 0 auto;
+                justify-content: space-between;
+            }
     
-    .book-card--rows {
-        grid-template-columns: min-content 1fr;
-        grid-template-rows: repeat(4, min-content);
-        column-gap: 8px;
-        grid-template-areas: 
-            'img    name'
-            'img    author'
-            'img    rate'
-            'img    button';
+            .book-card__button {
+                width: 100%;
+            }
+        
+            .book-name {
+                flex: 0 0 auto;
+                margin-bottom: 8px;
+            }
     
-        width: 288px;
-        padding: 16px 16px 16px 8px;
-        border-radius: 10px;
-    
-        .image-wrapper {
-            width: 70px;
-            height: 100px;
-        }
-    
-        .name {
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 18px;
-        }
-    
-        .author {
-            font-size: 12px;
-            line-height: 18px;
-            margin: 3px 0;
-        }
-         
-        .rate {
-            svg {
-                width: 16px;
-                height: 16px;
+            .book-author {
+                font-size: 12px;
             }
         }
-    
-        .button {
-            width: 186px;
-            margin-top: 16px;
+        
+        &.book-card--rows {
+            grid-template-columns: min-content 1fr;
+            grid-template-rows: repeat(4, min-content);
+            column-gap: 8px;
+            grid-template-areas: 
+                'img    name'
+                'img    author'
+                'img    rate'
+                'img    button';
+        
+            width: 288px;
+            padding: 16px 16px 16px 8px;
+            border-radius: 10px;
+        
+            .image-wrapper {
+                width: 70px;
+                height: 100px;
+            }
+        
+            .name {
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        
+            .author {
+                font-size: 12px;
+                line-height: 18px;
+                margin: 3px 0;
+            }
+             
+            .rate {
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        
+            .button {
+                width: 186px;
+                margin-top: 16px;
+            }
         }
     }
+
 }

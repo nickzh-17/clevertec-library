@@ -23,10 +23,13 @@ export const LottieLoader = () => {
         animationData
     };
 
-    return <div className={classNames(
-        'lottie-loader',
-        {active: isFetching}    
-    )}>
+    return <div
+        data-test-id='loader' 
+        className={classNames(
+            'lottie-loader',
+            {active: isFetching}    
+        )}
+    >
         <Lottie options={defaultOptions} height={200} width={200} />
     </div>;
 };

@@ -4,7 +4,7 @@ import { useWindowWidth } from '../../functions/get-window-width';
 import './layout-main-page.scss';
 
 
-export const LayoutMainPage = ({children}) => <div className='layout-main-page global-wrapper'>
+export const LayoutMainPage = () => <div className='layout-main-page global-wrapper'>
     <div className='content'>
         { 
             ( useWindowWidth() >= 1440 ) ? 
