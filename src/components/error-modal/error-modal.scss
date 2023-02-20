@@ -1,0 +1,120 @@
+.error-modal {
+
+    display: none;
+
+    &.error-modal--active {
+        display: flex;
+    }
+
+
+    box-sizing: border-box;
+    width: 1110px;
+    height: 80px;
+    padding: 0 32px;
+
+    background: #FEEBEA;
+    border: 1.5px solid #F42C4F;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 64px;
+    left: calc(50vw - 562px);
+
+    
+    justify-content: space-between;
+    align-items: center;
+
+    .error-modal__message {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .error-modal__text {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 24px;
+            color: #363636;
+        }
+    }
+
+    .error-modal__button {
+        cursor: pointer;
+
+        border: none;
+        background: transparent;
+
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .error-modal {
+        width: 640px;
+        height: 72px;
+        padding: 0 16px;
+
+        top: 62px;
+        left: calc(50vw - 328px);
+        
+        .error-modal__message {
+            gap: 12px;
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+    
+            .error-modal__text {
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    
+        .error-modal__button {
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .error-modal {
+        width: 280px;
+        height: auto;
+        padding: 12px 16px;
+    
+
+        top: 64px;
+        left: calc(50vw - 148px);
+
+        align-items: flex-start;
+    
+        .error-modal__message {
+            align-items: flex-start;
+            gap: 12px;
+    
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .error-modal__text {
+                width: 186px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    
+        .error-modal__button {
+            svg {
+                width: 16px;
+                height: 16px;    
+            }
+        }
+    }
+}
+

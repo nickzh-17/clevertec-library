@@ -1,0 +1,31 @@
+.current-path__wrapper {
+    width: 100%;
+    background-color: #F9F9FA;
+}
+
+
+
+.current-path__content {
+    min-height: 64px;
+    background-color: #F9F9FA;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #A7A7A7;
+
+    display: flex;
+    align-items: center;
+    
+    gap: 0 4px;
+
+    svg {
+        position: relative;
+        top: 8px;
+    }
+
+    .current-route {
+        padding-bottom: 4px;
+    }
+    
+}

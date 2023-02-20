@@ -1,0 +1,177 @@
+.book-main-content {
+    display: grid;
+    grid-template-columns: 445px 1fr;
+    grid-template-rows: repeat(2, min-content), 1fr;
+    column-gap: 30px;
+    grid-template-areas: 
+        'img    name'
+        'img    descr'
+        'img    x';
+
+    .image {
+        grid-area: img;
+        height: 594px;
+
+
+        .image-bypass svg {
+            width: 56px;
+        }  
+    }
+
+    .slider {
+        grid-area: img;
+    }
+
+    .name-section {
+        grid-area: name;
+
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 62px;
+
+        .name {
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        .author {
+            margin-top: 24px;
+            margin-bottom: 32px;
+
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 28px;
+            color: #A7A7A7;
+        }
+
+        .button {
+            width: 350px;
+        }
+    }
+
+    .description-section {
+        grid-area: descr;
+
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        .description {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .book-main-content {
+        grid-template-columns: 136px 1fr;
+        column-gap: 32px;
+        grid-template-areas: 
+            'img    name'
+            'descr  descr'
+            'x      x';
+    
+        .image {
+            height: 198px;
+    
+            .image-bypass svg {
+                width: 32px;
+            }  
+        }
+    
+        .name-section {
+            margin-bottom: 48px;
+    
+            .name {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 30px;
+            }
+    
+            .author {
+                margin-top: 32px;
+    
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 18px;
+            }
+    
+            .button {
+                width: 306px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .book-main-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, min-content) 1fr;
+        column-gap: 0;
+        grid-template-areas: none;
+    
+        .image {
+            grid-area: auto;
+            width: 188px;
+            height: 260px;
+
+            justify-self: center;
+            
+    
+            .image-bypass svg {
+                width: 48px;
+            }  
+        }
+
+        .slider {
+            grid-area: auto;
+            justify-self: center;
+        }
+    
+        .name-section {
+            grid-area: auto;
+    
+            margin-top: 16px;
+            margin-bottom: 42px;
+    
+            .name {
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 28px;
+            }
+    
+            .author {
+                margin-top: 8px;
+                margin-bottom: 42px;
+    
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 18px;
+                color: #A7A7A7;
+            }
+    
+            .button {
+                width: 288px;
+            }
+        }
+    
+        .description-section {
+            // grid-area: descr;
+            grid-area: auto;
+    
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+    
+            .description {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+    }
+}

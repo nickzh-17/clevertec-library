@@ -1,0 +1,16 @@
+.search-controls {
+    display: flex;
+    justify-content: space-between;
+
+    &.search-icon--open {
+        .filter-icon,
+        .display-settings {
+            display: none;
+        }
+    }
+}
+
+.search-controls__left {
+    display: flex;
+    gap: 16px;
+}

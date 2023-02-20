@@ -1,0 +1,17 @@
+.main-content--grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 21.5px;
+}
+
+.main-content--rows {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .main-content--grid {
+        gap: 32px 35px;
+    }
+}

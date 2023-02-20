@@ -1,0 +1,129 @@
+.slider {
+    width: 445px;
+
+    .swiper-scrollbar-drag {
+
+      background: #A7A7A7;
+
+      &:first-child {
+        display: none;
+      }
+      
+    }
+
+    .swiper-scrollbar {
+      position: absolute;
+      background: transparent;
+      top: 94px;
+      visibility: hidden;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .thumb {        
+        .slider--big {
+            height: 593px;
+            width: 445px;
+            
+            overflow: hidden;
+
+            img {
+                width: inherit;
+                height: inherit;
+                border: 1px solid #A7A7A7;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .gallery {
+        height: 98px;
+        position: relative;
+
+        .slider--small {
+            height: 98px;
+            width: 445px;
+
+            img {
+                width: 65px;
+                height: 86px;
+                border-radius: 3px;
+            }
+
+            .swiper-slide {
+              width: 65px;
+            }
+        }
+
+        .swiper-slide-thumb-active img {
+          border: 1px solid #F83600;
+        }
+
+        &:hover {
+          .swiper-scrollbar {
+            visibility:visible;
+          }
+
+        }
+    }
+
+}
+
+@media screen and (max-width: 1439px) {
+  .slider {
+    display: block;
+    width: 136px;
+
+    .slider--big {
+      height: 238px;
+      width: 136px;
+      
+      
+      overflow: hidden;
+      
+      img {
+        width: inherit;
+        height: 198px;
+        border: 1px solid #A7A7A7;
+        border-radius: 3px;
+      }
+                        
+    }
+
+    .swiper-pagination-bullet {
+      width: 7px;
+      height: 7px;
+      background: #BFC4C9;
+
+      &.swiper-pagination-bullet-active {
+        width: 9px;
+        height: 9px;
+        background: #363636;
+      }
+    }
+
+  }
+} 
+
+
+
+@media screen and (max-width: 767px) {
+  .slider {
+    width: 188px;
+
+    .slider--big {
+      height: 300px;
+      width: 188px;
+      
+            
+      img {
+        height: 260px;
+        border-radius: 10px;
+      }
+                        
+    }
+
+  }
+} 

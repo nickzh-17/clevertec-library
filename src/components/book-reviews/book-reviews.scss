@@ -1,0 +1,13 @@
+.book-reviews {
+
+    display: grid;
+    row-gap: 42px;
+
+    height: 0px;
+    overflow: hidden;
+
+
+    &.open {
+        height: auto;
+    }
+}

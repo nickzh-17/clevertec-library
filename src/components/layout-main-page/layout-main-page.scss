@@ -1,0 +1,24 @@
+.layout-main-page {
+
+    flex: 1 0 auto;
+    padding-top: 62px;
+    padding-bottom: 62px;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .layout-main-page {
+        padding-top: 54px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .layout-main-page {
+        padding-top: 35px;
+    }
+}

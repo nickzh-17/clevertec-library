@@ -1,0 +1,1 @@
+export { SingleBook } from './single-book';

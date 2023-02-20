@@ -1,0 +1,35 @@
+.rating-stars {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+
+    .stars {
+        display: flex;
+    }
+
+    .star--unfilled {
+        fill: none;
+    }
+    
+    .star--filled {
+        fill: #FFBC1F;
+    }
+
+    .calculation {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 28px;
+        color: #363636;
+    }
+}
+
+.rate--bypass {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #A7A7A7;
+}
+
+
+
