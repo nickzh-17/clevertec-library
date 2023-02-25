@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux/es/exports';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 
 import { CurrentPath } from './components/current-path';
@@ -18,15 +18,21 @@ import './book-page.scss';
 
 
 export const BookPage = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+    const categories = useSelector(store => store.bookReducer.genres);
     const {bookId, category} = useParams();
     const currentBook = useSelector(store => store.bookReducer.currentBook);
+    
 
 
+    // if(category === 'all') navigate()
+    
 
 
     return <section className='book-page'> 
-                    <CurrentPath category={currentBook ? currentBook.categories[0] : 'Все книги'} title={currentBook?.title}/>
+                    <CurrentPath categoryPath={category} categoryRu={currentBook ? currentBook.categories[0] : 'Все книги'} title={currentBook?.title}/>
                     <SingleBook />
     </section>;
 }

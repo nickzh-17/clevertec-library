@@ -1,6 +1,7 @@
 const defaultState = {
     isFetching: false,
     isErrorModalActive: false,
+    currentCategory: null
 };
 
 export const mainReducer = (state = defaultState, action ) => {
@@ -20,6 +21,10 @@ export const mainReducer = (state = defaultState, action ) => {
       case 'CLOSE_FETCHING-ERROR':
         console.log('ERROR CLOSED!');
         return {...state, isErrorModalActive: false};
+      
+      case 'SET-CATEGORY':
+        console.log(`now category is ${action.payload}`);
+        return {...state, currentCategory: action.payload};
 
 
       default:

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 import { booksData, bookGenres } from '../../resources/books';
@@ -12,12 +12,17 @@ export const Navigation = ({
   onNavigateItemClick: closeBurger,
   showcaseId, booksId, termsId, contractId
 }) => {
+  const dispatch = useDispatch();
   const currentPath = useLocation().pathname;
   const [isBooksOpen, setIsBooksOpen] = useState( comparePathToBook(currentPath) || currentPath === '/' );
   const navigate = useNavigate();
+
+  const categoriesCount = useSelector(store => store.bookReducer.categoriesCount);
   const isFetching = useSelector(store => store.mainReducer.isFetching);
-  const isNavSynchro = useSelector(store => store.mainReducer.isNavSynchro);
   const isErrorModalActive = useSelector(store => store.mainReducer.isErrorModalActive);
+
+  const categories = useSelector(store => store.bookReducer.genres);
+  const books = useSelector(store => store.bookReducer.books);
 
 
   if(isFetching && isBooksOpen) setIsBooksOpen(false);
@@ -101,7 +106,7 @@ export const Navigation = ({
           <ul className={`navigation__books sub-liks ${isBooksOpen ? 'open' : ''}`}>
             <li className='navigation__book-item'>
               <NavLink
-                data-test-id={booksId}
+                data-test-id={isInsideBurger ? 'burger-books' : 'navigation-books'}
                 to='/books/all'
                 onClick={subItemClickHandler}
                 className={({ isActive }) =>
@@ -112,7 +117,39 @@ export const Navigation = ({
               </NavLink>
             </li>
 
-            {bookGenres.map((genre) => {
+            {
+              categories && books && categories.map((category) => {
+                const bookCount = books.reduce((total, book) => 
+                  book.categories.includes(category.name) ? total + 1 : total
+                , 0);
+                
+
+                return (
+                  <li className='navigation__book-item' key={Math.random().toString()}>
+                    <NavLink
+                      data-test-id={isInsideBurger ? `burger-${category.path}` : `navigation-${category.path}`}
+                      onClick={subItemClickHandler}
+                      to={`/books/${category.path}`}
+                      className={({ isActive }) =>
+                        isActive ? 'navigation__item--active' : ''
+                      }
+                    >
+                      {category.name}
+                    </NavLink>
+                    <span 
+                      data-test-id={isInsideBurger ? 
+                        `burger-book-count-for-${category.path}` 
+                        : `navigation-book-count-for-${category.path}`}
+                      className='book-count'
+                    >
+                      {bookCount}
+                    </span>
+                  </li>
+                );
+            })}
+
+            {/* {
+            bookGenres.map((genre) => {
               const bookCount = booksData.reduce((total, book) => (book.genreEng === genre.route ? total + 1 : total), 0);
 
               return (
@@ -129,7 +166,9 @@ export const Navigation = ({
                   <span className='book-count'>{bookCount}</span>
                 </li>
               );
-            })}
+            })} */}
+
+            
           </ul>
         </li>
         <li>

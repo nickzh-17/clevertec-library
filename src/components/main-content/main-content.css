@@ -1,3 +1,19 @@
+.no-books__wrapper {
+    justify-content: center;
+    padding-top: 168px;
+}
+.no-books__content {
+    width: 100vw;
+    max-width: 824px;
+    text-align: center;
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    color: #A7A7A7;
+}
+
 .main-content--grid {
     display: flex;
     flex-wrap: wrap;
@@ -13,5 +29,23 @@
 @media screen and (min-width: 768px) and (max-width: 1439px) {
     .main-content--grid {
         gap: 32px 35px;
+    }
+
+    .no-books__wrapper {
+        padding-top: 200px;
+    }
+    .no-books__content {
+        max-width: 640px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .no-books__wrapper {
+        padding-top: 120px;
+    }
+    .no-books__content {
+        max-width: 288px;
+        font-size: 18px;
+        line-height: 28px;
     }
 }

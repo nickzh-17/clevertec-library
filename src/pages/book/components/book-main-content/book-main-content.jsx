@@ -15,7 +15,7 @@ export const BookMainContent = ({book, className}) => {
         <BookPreview book={book} />
 
         <div className="name-section">
-            <span className='name'>{book.title}</span>
+            <span data-test-id='book-title' className='name'>{book.title}</span>
             <span className='author'>{book.authors}, {book.issueYear}</span>
             <BookButton 
                 booking={book.booking} 
