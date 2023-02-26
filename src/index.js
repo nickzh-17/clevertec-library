@@ -27,7 +27,7 @@ root.render(
         <Route path='/' element={<Layout />}>
           <Route element={<LayoutMainPage /> }>
             <Route index={true} element={<Navigate to='books/all' />} />
-            <Route path='/books/:category' element={<MainPage />} />
+            <Route path='/books/:categoryUrl' element={<MainPage />} />
             <Route path='terms' element={<Terms contentView='terms'/>} />
             <Route path='contract' element={<Terms contentView='contract'/>} />
           </Route>

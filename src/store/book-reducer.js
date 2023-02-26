@@ -2,6 +2,7 @@ const defaultState = {
     books: [],
     currentBook: null,
     genres: [],
+    categoriesCount: [],
 };
 
 export const bookReducer = (state = defaultState, action ) => {
@@ -11,12 +12,9 @@ export const bookReducer = (state = defaultState, action ) => {
       
       case 'SET_CURRENT-BOOK':
         return {...state, currentBook: action.payload};
-          
-      case 'GET_BOOK':
-        return state.books.find( (book) => book.id === action.payload );
             
       case 'SET_GENRES':
-        return {...state, genres: action.payload }
+        return {...state, genres: action.payload };
   
       default:
         return state;

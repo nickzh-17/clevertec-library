@@ -16,6 +16,20 @@
     box-shadow: 0px 2px 4px rgba(191, 196, 201, 0.2), 0px 3px 4px rgba(191, 196, 201, 0.18), 0px 1px 5px rgba(191, 196, 201, 0.24);
     border-radius: 599px;
 
+
+
+    .search-icon {
+        fill: #A7A7A7;
+
+        path {
+            fill: inherit;
+        }
+
+        &.search-icon--focus {
+            fill: url(#searchGradient);
+        }
+    }
+
     &.mobile {
         display: none;
         width: 288px;
@@ -46,7 +60,7 @@
 
     color: #A7A7A7;
     border: none;
-    caret-color: #F83600;
+    caret-color: rgb(248, 54, 0);
 }
 
 .search-bar input:focus-visible {

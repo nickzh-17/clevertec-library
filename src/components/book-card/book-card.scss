@@ -52,6 +52,16 @@
         font-weight: 600;
         font-size: 14px;
         line-height: 18px;
+
+        .highlighted-text {
+            background: none;
+            color: #FF5253;
+        }
+
+        .book-name--highlighted {
+            background: none;
+            color: #FF5253;
+        }
     }
     
     .book-author {

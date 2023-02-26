@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import axios from 'axios';
 
 import { SearchControls } from '../../components/search-controls';
 import { MainContent } from '../../components/main-content';
+import { useBooksByPath, useBooksBySortSearch } from '../../hooks/use-books';
 
 import './main-page.css';
 
@@ -13,9 +14,12 @@ export const MainPage = () => {
     const dispatch = useDispatch();
 
     const [books, setBooks] = useState(null);
+    const categories = useSelector(store => store.bookReducer.genres);
+    // const [categories, setCategories] = useState(null);
 
     useEffect( () => {
         dispatch({type: 'START_FETCHING'});
+        // console.log(`CATEGORIES length is ${categories?.length}`);
         Promise.all([
             axios.get('https://strapi.cleverland.by/api/books'),
             axios.get('https://strapi.cleverland.by/api/categories')
@@ -25,12 +29,8 @@ export const MainPage = () => {
                 dispatch({type: 'SET_GENRES', payload: responses[1].data});
                 
                 setBooks(responses[0].data);
+                
                 dispatch({type: 'END_FETCHING'});
-
-                dispatch({type: 'SYNCHRO_NAV', payload: true});
-                console.log('syncronize..');
-                dispatch({type: 'SYNCHRO_NAV', payload: false});
-
             } else {
                 throw new Error('Something went wrong');
                 
@@ -42,8 +42,31 @@ export const MainPage = () => {
     }, [dispatch] );
 
 
-    const {category} = useParams();
+    const {categoryUrl} = useParams();
     const [viewConfig, setViewConfig] = useState('grid');
+
+    // sort = 'desc' | 'asc'
+    const [filter, setFilter] = useState({sort: 'desc', query: ''});
+    
+    useEffect(() => {
+        dispatch({type: 'SET-CATEGORY', payload: categoryUrl});
+    }, [dispatch, categoryUrl]);
+
+    const booksByPath = useBooksByPath(books, categories, categoryUrl);
+    const booksByCategorySortSearch = useBooksBySortSearch(booksByPath, filter.sort, filter.query);
+    
+    // const booksByPath = useBooksByPath(books, categoryUrl, categories);
+    // console.log(`books by path are:`, booksByPath);
+    
+    // if(categoryUrl && categories) {
+    //     // const category = getCategoryByPath(categoryUrl, categories);
+    //     const test = (categories.length) ? 
+    //         categories.find( (category) => category.path === categoryUrl )?.name
+    //         :
+    //         null;
+    //     console.log(`category on main is ${categoryUrl} and genre length is ${categories.length}, category done: ${test}`);
+    //     // console.log(category);
+    // }
 
     const viewSwitchHandler = (newViewType) => setViewConfig(newViewType);
 
@@ -52,8 +75,16 @@ export const MainPage = () => {
         books &&
 
         <section className='main-page'>
-            <SearchControls onViewSwitch={viewSwitchHandler} />
-            <MainContent viewType={viewConfig} category={category} />
+            {/* <h1>Query:{filter.query}, Sort:{filter.sort}</h1> */}
+            <SearchControls 
+                filter={filter} 
+                setFilter={setFilter} 
+                onViewSwitch={viewSwitchHandler} />
+            <MainContent 
+                viewType={viewConfig} 
+                books={booksByCategorySortSearch} 
+                booksByCategory={booksByPath} 
+                query={filter.query} />
         </section>
     }
 
