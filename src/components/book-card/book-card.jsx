@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Highlighter from "react-highlight-words";
 
 import { SmartBookImage } from '../smart-book-image';
@@ -18,6 +18,8 @@ const HighlightedText = ({ children, highlightIndex }) =>
 
 export const BookCard = ({viewType, book, query}) => {
     const genres = useSelector(store => store.bookReducer.genres);
+    const categoryPath = useSelector(store => store.mainReducer.currentCategory);
+    const dispatch = useDispatch();
 
     const path = {
         category: getPathByCategory(book.categories[0], genres),
@@ -29,6 +31,9 @@ export const BookCard = ({viewType, book, query}) => {
     let cardContent = null;
 
 
+    const cardBookClickHandler = () => {
+        dispatch({type: 'SET-SIMPLE-BOOK-ID', payload: book.id});
+    }; 
 
     
 
@@ -81,7 +86,8 @@ export const BookCard = ({viewType, book, query}) => {
 
     return <Link 
         data-test-id='card' 
-        to={`/books/${path.category}/${path.id}`}
+        to={`/books/${categoryPath}/${path.id}`}
+        onClick={cardBookClickHandler}
     >
         {cardContent}
     </Link>;

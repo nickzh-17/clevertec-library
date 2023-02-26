@@ -1,7 +1,8 @@
 const defaultState = {
     isFetching: false,
     isErrorModalActive: false,
-    currentCategory: null
+    currentCategory: null,
+    currentSimpleBookId: null,
 };
 
 export const mainReducer = (state = defaultState, action ) => {
@@ -25,6 +26,9 @@ export const mainReducer = (state = defaultState, action ) => {
       case 'SET-CATEGORY':
         console.log(`now category is ${action.payload}`);
         return {...state, currentCategory: action.payload};
+
+      case 'SET-SIMPLE-BOOK-ID':
+        return {...state, currentSimpleBookId: action.payload};
 
 
       default:
