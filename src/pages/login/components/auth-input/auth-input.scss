@@ -1,0 +1,36 @@
+.auth-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.auth-input__input {
+  width: 100%;
+  padding: 20px 12px;
+
+  background: #f9f9fa;
+  border: none;
+  border-bottom: 1px solid #bfc4c9;
+
+  &::placeholder {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #363636;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.auth-input__tip {
+  padding-left: 12px;
+
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #a7a7a7;
+}
