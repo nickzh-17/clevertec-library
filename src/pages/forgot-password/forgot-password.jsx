@@ -14,6 +14,7 @@ import { ForgotResult } from './forgot-result/forgot-result';
 export const ForgotPassword = () => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState('sending');
+
   const {
     register,
     handleSubmit,
@@ -31,15 +32,10 @@ export const ForgotPassword = () => {
       .catch((axiosError) => {
         console.log(axiosError);
 
-        if (axiosError.response.status === 400) {
-          setStatus('sendError');
-          console.log(222);
-          return;
-        }
-
         if (!axiosError.response || axiosError.response.status.toString(10).at(0) !== '2') {
           setStatus('randomError');
         }
+        return null;
       });
   };
 
@@ -74,6 +70,11 @@ export const ForgotPassword = () => {
             register={register}
             // validationSchema={password.validationSchema}
           />
+          {status === 'randomError' && (
+            <div data-test-id='hint' className='forgot-password__error'>
+              error
+            </div>
+          )}
 
           <FormTip
             defaultTip='На этот email  будет отправлено письмо с инструкциями по восстановлению пароля'
