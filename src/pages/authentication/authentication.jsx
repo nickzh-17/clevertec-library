@@ -155,7 +155,7 @@ export const Authentication = ({ setIsAuth }) => {
         </FormField> */}
 
         {status !== 'incorrectValues' ? (
-          <Link className='authentication__forgot-link' to='/forgot-password'>
+          <Link className='authentication__forgot-link' to='/forgot-pass'>
             Забыли логин или пароль?
           </Link>
         ) : (

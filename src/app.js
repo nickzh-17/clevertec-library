@@ -50,7 +50,7 @@ export const App = () => {
               <Route index={true} element={<Navigate to='/auth' />} />
               <Route path='/auth' element={<Authentication setIsAuth={setIsAuth} />} />
               <Route path='/registration' element={<Registration />} />
-              <Route path='/forgot-password' element={<ForgotPassword />} />
+              <Route path='/forgot-pass' element={<ForgotPassword />} />
               <Route path='*' element={<Navigate to='/auth' />} />
             </Route>
           </Routes>
