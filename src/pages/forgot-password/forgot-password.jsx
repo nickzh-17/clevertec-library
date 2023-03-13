@@ -3,13 +3,31 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { FormTip } from '../../components/ui/form-tip/form-tip';
-import { TextInput } from '../../components/ui/text-input/text-input';
 import backArrow from '../../resources/img/icons/back-arrow-icon.svg';
 import './forgot-password.scss';
 
+import { EmailInput } from '../../components/ui/email-input/email-input';
 import arrow from '../../resources/img/icons/auth-arrow.svg';
 import { ForgotResult } from './forgot-result/forgot-result';
+
+const emailData = {
+  name: 'email',
+  type: 'email',
+  title: 'E-mail',
+  keywords: [
+    { key: 'minLength', string: 'не менее 8 символов' },
+    { key: 'upperLetter', string: 'заглавной буквой' },
+    { key: 'number', string: 'цифрой' },
+  ],
+  errorTips: [
+    { type: 'required', message: 'Поле не может быть пустым' },
+    { type: 'pattern', message: 'Введите корректный e-mail' },
+  ],
+  validationSchema: {
+    required: true,
+    pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+  },
+};
 
 export const ForgotPassword = () => {
   const { code } = useParams();
@@ -20,7 +38,9 @@ export const ForgotPassword = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    // errors,
+    reset,
+  } = useForm({ mode: 'all', validateCriteriaMode: 'all' });
 
   const postForgot = (data, setStatus) => {
     console.log(data);
@@ -64,11 +84,16 @@ export const ForgotPassword = () => {
           id='form_forgot'
           className='forgot-password__form'
         >
-          <TextInput
-            type='text'
-            inputName='email'
-            placeholder='Email'
+          <EmailInput
+            keywords={emailData.keywords}
             register={register}
+            validationSchema={emailData.validationSchema}
+            error={errors[emailData.name]}
+            hints={emailData.errorTips}
+            defaultHint={emailData.defaultHint}
+            inputName={emailData.name}
+            placeholder={emailData.title}
+
             // validationSchema={password.validationSchema}
           />
           {status === 'randomError' && (
@@ -77,12 +102,9 @@ export const ForgotPassword = () => {
             </div>
           )}
 
-          <FormTip
-            defaultTip='На этот email  будет отправлено письмо с инструкциями по восстановлению пароля'
-            errors={errors}
-            name='email'
-            errorTips={[{ type: 'required', message: 'REQQQ' }]}
-          />
+          <div className='forgot-password__info'>
+            На этот email будет отправлено письмо с инструкциями по восстановлению пароля
+          </div>
 
           <button className='forgot-password__button' form='form_forgot' type='submit'>
             восстановить
