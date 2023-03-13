@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FormTip } from '../../components/ui/form-tip/form-tip';
 import { TextInput } from '../../components/ui/text-input/text-input';
 import backArrow from '../../resources/img/icons/back-arrow-icon.svg';
@@ -12,6 +12,7 @@ import arrow from '../../resources/img/icons/auth-arrow.svg';
 import { ForgotResult } from './forgot-result/forgot-result';
 
 export const ForgotPassword = () => {
+  const { code } = useParams();
   const dispatch = useDispatch();
   const [status, setStatus] = useState('sending');
 
@@ -51,7 +52,7 @@ export const ForgotPassword = () => {
       <div className='forgot-password__head'>
         <Link className='forgot-password__link-auth' to='/auth'>
           <img src={backArrow} alt='back-arrow' />
-          <span>Вход в личный кабинет</span>
+          <span>Вход в личный кабинет{code}</span>
         </Link>
       </div>
       <div className='forgot-password__body'>
