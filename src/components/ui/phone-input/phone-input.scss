@@ -1,0 +1,50 @@
+.phone-input {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 20px 12px;
+
+  background: #f9f9fa;
+  border-bottom: 1px solid #bfc4c9;
+
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.phone-input.focused {
+  padding: 4px 12px 16px;
+}
+
+.phone-input__input {
+  width: 100%;
+
+  background: transparent;
+  border: none;
+}
+.phone-input__input,
+.phone-input__input::placeholder {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  color: #363636;
+}
+.phone-input__input:focus {
+  outline: none;
+}
+
+.phone-input__label {
+  display: none;
+
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #a7a7a7;
+}
+.phone-input__label.focused {
+  display: inline;
+}

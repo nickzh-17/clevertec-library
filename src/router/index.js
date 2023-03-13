@@ -1,5 +1,6 @@
-import { Login } from '../pages/login/login';
+import { Registration } from '../pages/registration/registration';
 
+import { Authentication } from '../pages/authentication/authentication';
 import { BookPage } from '../pages/book';
 import { MainPage } from '../pages/main';
 import { Terms } from '../pages/terms';
@@ -13,4 +14,8 @@ export const privateRoutes = {
   outLayout: [{ path: '/books/:category/:bookId', element: <BookPage /> }],
 };
 
-export const publicRoutes = [{ path: '/login', element: <Login />, index: true }];
+export const publicRoutes = [
+  { path: '/', element: <Authentication /> },
+  { path: '/auth', element: <Authentication /> },
+  { path: '/registration', element: <Registration /> },
+];

@@ -1,33 +1,32 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from '../header/header';
-import { Footer } from '../footer';
-import { LottieLoader } from '../lottie-loader';
 import { ErrorModal } from '../error-modal';
-
+import { Footer } from '../footer';
+import { Header } from '../header/header';
+import { LottieLoader } from '../lottie-loader';
 
 import './layout.scss';
 
+export const Layout = ({ setIsAuth }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export const Layout = () => {
+  const burgerButtonClickHandler = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  return (
+    <div className='layout'>
+      <Header className='layout__header' onBurgerButtonClick={burgerButtonClickHandler} setIsAuth={setIsAuth} />
 
-    const burgerButtonClickHandler = () => {
-        setIsMenuOpen( !isMenuOpen );
-    };
+      <div className='layout__content'>
+        <Outlet />
+      </div>
 
-    return <div className='layout'>
-        <Header className='layout__header global-wrapper' onBurgerButtonClick={burgerButtonClickHandler} />
-        
-        <div className='layout__content'>
-            <Outlet />
-        </div>
+      <Footer className='layout__footer' />
 
-        <Footer className='layout__footer'/>
-
-        <LottieLoader />
-        <ErrorModal />
-    </div>;
-}
+      <LottieLoader />
+      <ErrorModal />
+    </div>
+  );
+};

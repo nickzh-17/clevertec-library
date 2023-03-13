@@ -1,17 +1,12 @@
 .profile {
-    display: flex;
-    gap: 16px;
-    align-items: center;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .profile__greetings {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.1px;
-}
-
-.avatar__link {
-    border-radius: 50%;
-    overflow: hidden;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.1px;
 }

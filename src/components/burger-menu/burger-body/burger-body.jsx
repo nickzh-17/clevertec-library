@@ -6,19 +6,17 @@ import './burger-body.scss';
 //     <Navigation />
 // </div>;
 
-export const BurgerBody = ({isOpen, onChangeLink}) => 
-<div 
-    data-test-id='burger-navigation' 
-    className={`burger-body ${ isOpen ? 'menu-opened' : '' }`} 
->
-    <Navigation 
-        isInsideBurger={true} 
-        onNavigateItemClick={onChangeLink}
-        showcaseId='burger-showcase'
-        booksId='burger-books'
-        termsId='burger-terms'
-        contractId='burger-contract' 
-    /> 
+export const BurgerBody = ({ isOpen, onChangeLink, setIsAuth }) => (
+  <div data-test-id='burger-navigation' className={`burger-body ${isOpen ? 'menu-opened' : ''}`}>
+    <Navigation
+      isInsideBurger={true}
+      onNavigateItemClick={onChangeLink}
+      showcaseId='burger-showcase'
+      booksId='burger-books'
+      termsId='burger-terms'
+      contractId='burger-contract'
+    />
 
-    <AccountLinks />
-</div>;
+    <AccountLinks setIsAuth={setIsAuth} />
+  </div>
+);

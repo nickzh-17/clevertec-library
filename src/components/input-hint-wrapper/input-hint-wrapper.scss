@@ -1,0 +1,34 @@
+.input-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .error-accent {
+    color: #f42c4f;
+  }
+
+  .input-hint__hint {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    margin-left: 12px;
+
+    color: #a7a7a7;
+
+    &.allHighlited {
+      color: #f42c4f;
+    }
+
+    &.error-accent {
+      color: #f42c4f;
+    }
+
+    &.empty {
+      display: inline-block;
+      height: 18px;
+      // color: #a7a7a7;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+.registration {
+  width: 528px;
+
+  padding: 48px 56px;
+
+  background: white;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .registration__head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .registration__heading {
+      font-family: 'Montserrat';
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 30px;
+      color: #363636;
+    }
+  }
+
+  .registration__form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .registration__button {
+    width: 100%;
+
+    height: 52px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
+
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: white;
+
+    cursor: pointer;
+
+    &[disabled] {
+      background: #ebebeb;
+
+      &:hover {
+        border: none;
+        box-shadow: none;
+        cursor: default;
+      }
+    }
+
+    &:hover {
+      border: 1px solid #ff740f;
+      box-shadow: 0px 2px 5px rgba(54, 54, 54, 0.1);
+    }
+
+    &:active {
+      box-shadow: 0px 3px 4px rgba(222, 125, 11, 0.2), 0px 1px 10px rgba(249, 89, 8, 0.2);
+    }
+  }
+
+  .auth-question {
+    margin-top: 16px;
+
+    display: flex;
+    gap: 16px;
+
+    .auth-question__link {
+      font-family: 'Montserrat';
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      color: #363636;
+
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .auth-question__arrow {
+      height: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .registration {
+    width: 288px;
+
+    padding: 24px 16px;
+
+    gap: 32px;
+
+    .registration__form {
+      gap: 10px;
+    }
+
+    .registration__button {
+      height: 40px;
+      border-radius: 20px;
+
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    .auth-question {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}

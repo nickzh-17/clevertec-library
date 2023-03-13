@@ -1,23 +1,26 @@
+import { useState } from 'react';
 import { useWindowWidth } from '../../functions/get-window-width';
-import { Profile } from './profile/profile';
-import { Logo } from './logo/logo';
 import { BurgerMenu } from '../burger-menu/burger-menu';
+import { Logo } from './logo/logo';
+import { Profile } from './profile/profile';
 
 import './header.scss';
 
-export function Header({className, onBurgerButtonClick}) {
+export function Header({ className, onBurgerButtonClick, setIsAuth }) {
   const currentWidth = useWindowWidth();
+  const [hasShadow, setHasShadow] = useState(false);
+
+  const profileToggleHandler = () => setHasShadow((prev) => !prev);
 
   return (
-    <header className={className}>
-      {/* { ( currentWidth > 1439 ) ? <Logo /> : <BurgerMenu /> } */}
+    <header className={`main__header  ${hasShadow ? 'has-shadow' : ''} ${className}`}>
+      <div className='header__wrapper global-wrapper'>
+        <Logo />
+        <BurgerMenu setIsAuth={setIsAuth} />
 
-      <Logo />
-      <BurgerMenu />
-
-      <span className='main-title'>Библиотека</span>
-      { ( currentWidth > 1439 ) ? <Profile /> : false }
-      
+        <span className='main-title'>Библиотека</span>
+        {currentWidth > 1439 ? <Profile setIsAuth={setIsAuth} onProfileToggle={profileToggleHandler} /> : false}
+      </div>
     </header>
   );
 }
